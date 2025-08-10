@@ -22,7 +22,7 @@ public class DatabaseService  {
     private Dao<Reward, String> rewardDao;
     @SuppressWarnings("all")
     public DatabaseService() {
-        String PSQL_DATABASE_URL = "jdbc:postgresql://147.135.31.124:5432/gungens?user=gungens&password=Buildcr33k*";
+        String PSQL_DATABASE_URL = "";
         File dbFile = new File(Leveling.instance.getDataFolder().getAbsolutePath()+"/database.db");
 
         try {
