@@ -1,0 +1,4 @@
+name: Leveling
+version: '1.0-SNAPSHOT'
+main: com.gungens.misc.Leveling
+api-version: '1.21'
