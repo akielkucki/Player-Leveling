@@ -1,4 +1,7 @@
 # User-specific stuff
+resources/
+config.yml
+
 .idea/
 
 *.iml
