@@ -15,6 +15,9 @@ public class LevelService {
     public static LevelService INSTANCE = new LevelService();
     private final Map<UUID, Integer> zombieHunterLevel = new ConcurrentHashMap<>();
     private final Map<UUID, Integer> zombieHunterExp = new ConcurrentHashMap<>();
+    private final Map<UUID, Integer> playerKills = new ConcurrentHashMap<>();
+    private final Map<UUID, Integer> playerDeaths = new ConcurrentHashMap<>();
+
     private Random random = new Random();
     private void awardZombieHunterExp(Player player, int expAmount) {
         UUID playerId = player.getUniqueId();

@@ -14,6 +14,7 @@ public final class Leveling extends JavaPlugin {
                 "com.gungens.misc.commands",
                 "com.gungens.misc.listeners"
         );
+        saveDefaultConfig();
 
     }
 
