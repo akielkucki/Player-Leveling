@@ -1,14 +1,13 @@
 package com.gungens.misc.services;
 
+import com.gungens.misc.models.Reward;
 import org.bukkit.ChatColor;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LevelService {
@@ -17,8 +16,12 @@ public class LevelService {
     private final Map<UUID, Integer> zombieHunterExp = new ConcurrentHashMap<>();
     private final Map<UUID, Integer> playerKills = new ConcurrentHashMap<>();
     private final Map<UUID, Integer> playerDeaths = new ConcurrentHashMap<>();
+    private final Map<UUID, Long> loginTimes = new ConcurrentHashMap<>();
+    private final List<ItemStack> items = new ArrayList<>();
+    private final List<Reward> rewards = new ArrayList<>();
 
     private Random random = new Random();
+
     private void awardZombieHunterExp(Player player, int expAmount) {
         UUID playerId = player.getUniqueId();
         int currentExp = zombieHunterExp.getOrDefault(playerId, 0);
@@ -44,7 +47,7 @@ public class LevelService {
             player.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, player.getLocation().add(0, 1, 0), 30, 0.5, 0.5, 0.5, 0.1);
 
             // Give a reward at milestone levels
-            if (newLevel % 5 == 0) {
+            if (newLevel % 10 == 0) {
 
                 if (reward != null) {
                     player.getInventory().addItem(reward);
@@ -59,6 +62,7 @@ public class LevelService {
             }
         }
     }
+
     private void showProgressBar(Player player, int current, int max) {
         int bars = 20; // Progress bar length
         int filledBars = (int) Math.ceil((double) current / max * bars);
@@ -75,4 +79,9 @@ public class LevelService {
         progressBar.append(" ").append(ChatColor.YELLOW).append(current).append("/").append(max);
         player.sendMessage(progressBar.toString());
     }
+
+    public void loadAllRewards(List<Reward> r) {
+        rewards.addAll(r);
+    }
+
 }

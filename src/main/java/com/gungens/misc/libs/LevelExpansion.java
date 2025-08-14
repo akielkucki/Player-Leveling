@@ -22,7 +22,7 @@ public class LevelExpansion extends PlaceholderExpansion {
     @Override
     public String onPlaceholderRequest(Player player, String identifier) {
         if (identifier.equals("player_deaths")) {
-            return
+            return null;
         }
         return null;
     }

@@ -19,23 +19,11 @@ import java.util.logging.Level;
 
 public class DatabaseService  {
     private static final Logger log = LoggerFactory.getLogger(DatabaseService.class);
-    private Dao<Reward, String> rewardDao;
     @SuppressWarnings("all")
     public DatabaseService() {
         String PSQL_DATABASE_URL = "";
-        File dbFile = new File(Leveling.instance.getDataFolder().getAbsolutePath()+"/database.db");
 
-        try {
-
-            dbFile.getParentFile().mkdirs();
-            dbFile.createNewFile();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
         try (ConnectionSource psqlConnectionSource = new JdbcConnectionSource(PSQL_DATABASE_URL)) {
-
-
-
             Bukkit.getLogger().log(Level.INFO, "Database created/connected with url: " + PSQL_DATABASE_URL);
         } catch (SQLException | IOException e) {
             Bukkit.getLogger().log(Level.SEVERE, "Error while inserting data", e);
